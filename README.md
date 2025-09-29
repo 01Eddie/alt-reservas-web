@@ -1,59 +1,55 @@
 # AltReservasWeb
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+Este proyecto se generó con Angular CLI versión 20.3.3 [Angular CLI](https://github.com/angular/angular-cli)
 
-## Development server
+## Servidor de desarrollo
 
-To start a local development server, run:
+Para iniciar el servidor de desarrollo local, ejecute:
 
 ```bash
 ng serve
 ```
+Una vez que el servidor esté en funcionamiento, abra su navegador y acceda a http://localhost:4200/. La aplicación se recargará automáticamente al modificar cualquier archivo de origen.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Generación de código
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Angular CLI incluye herramientas avanzadas para la generación de código. Para generar un nuevo componente, ejecute:
 
 ```bash
 ng generate component component-name
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Para obtener la lista completa de esquemas disponibles (como `components`, `directives` o `pipes`), ejecute:
 
 ```bash
 ng generate --help
 ```
 
-## Building
+## Compilación
 
-To build the project run:
+Para compilar el proyecto, ejecute:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Esto compilará el proyecto y almacenará los archivos compilados en el directorio `dist/`. Por defecto, la compilación de producción optimiza la aplicación para un mejor rendimiento y velocidad.
 
-## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Vistas del Proyecto construido
+- /login
+![login](public/vistas/login.png)
 
-```bash
-ng test
-```
+- /register
+![registro](public/vistas/register.png)
 
-## Running end-to-end tests
+- /dashboard
+![dashboard](public/vistas/dashboard.png)
 
-For end-to-end (e2e) testing, run:
+- /reservation
+![reserva de sala](public/vistas/reservation.png)
 
-```bash
-ng e2e
-```
+- /reset-password
+![resetear contrasena](public/vistas/reset-password.png)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- /change-password
+![cambiar contrasena](public/vistas/change-password.png)
