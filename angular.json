@@ -93,11 +93,16 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/globals/styles/variables.scss",
+              "src/app/features/auth/register/register.scss"
             ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f5638199-0533-40e0-9c18-673a6943baf1"
   }
 }

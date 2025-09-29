@@ -1,0 +1,11 @@
+<h2 mat-dialog-title class="dialog-title">Confirmar reserva</h2>
+    <mat-dialog-content class="dialog-content">
+      <p>
+        ¿Está seguro de reservar la <b>{{ data.roomName }}</b><br>
+        el <b>{{ data.date }}</b> a las <b>{{ data.hour }}:00</b>?
+      </p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="dialog-actions">
+      <button mat-button color="warn" (click)="onNo()">No</button>
+      <button mat-raised-button color="primary" (click)="onYes()">Sí</button>
+    </mat-dialog-actions>

@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="auth-container">
+  <h2 class="auth-title">Crear cuenta</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="usuario" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Repetir Contraseña</mat-label>
+        <input matInput type="password" formControlName="repeatPassword" />
+      </mat-form-field>
+  
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="auth-button"
+      >
+        Registrar
+      </button>
+    </form>
+  </div>

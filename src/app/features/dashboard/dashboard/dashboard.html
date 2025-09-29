@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+  <mat-toolbar color="primary" class="dashboard-header">
+    <span class="title">Bienvenido al Dashboard</span>
+    <span class="spacer"></span>
+    <div class="user-actions" *ngIf="user">
+      <span class="username">{{ user.name }}</span>
+      <!-- <button mat-stroked-button color="accent" (click)="navigateToReservations()">
+        Quiero reservar una sala
+      </button> -->
+      <button mat-raised-button color="warn" (click)="logout()">
+        Cerrar sesión
+      </button>
+    </div>
+  </mat-toolbar>
+
+    <button mat-raised-button color="warn" (click)="navigateToReservations()">
+      Quiero Reservar una Sala?
+    </button>
+    
+    <section class="reservas-section">
+      <h2>Reservas</h2>
+    
+      <div class="controls">
+        <button mat-icon-button (click)="prevWeek()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button mat-icon-button (click)="nextWeek()">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    
+      <table class="calendar">
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th *ngFor="let d of weekDays">
+              {{ d | date: 'EEE dd/MM' }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let h of hours">
+            <td class="hour">{{ h }}:00</td>
+            <td *ngFor="let d of weekDays"
+                [ngClass]="{ 'past': isPast(d) }">
+              <div class="cell">
+                <ng-container *ngFor="let r of getReservationsFor(d, h)">
+                  <mat-chip [ngClass]="{
+                    'sala-a': r.room.name === 'Sala A',
+                    'sala-b': r.room.name === 'Sala B',
+                    'sala-c': r.room.name === 'Sala C'
+                  }">
+                    {{ r.room.name }}
+                  </mat-chip>
+                </ng-container>
+                <ng-template #noReservations>
+                  <span style="color: #aaa; font-size: 12px;">-</span>
+                </ng-template>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div>

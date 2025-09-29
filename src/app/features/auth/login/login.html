@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div class="auth-container">
+    <form 
+      [formGroup]="loginForm" 
+      (ngSubmit)="onSubmit()" 
+      class="auth-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+  
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="submit-btn"
+      >
+        Ingresar
+      </button>
+    </form>
+
+    <div>
+      <button mat-button type="button" class="secondary-btn" (click)="goToRegister()">
+        Registrarse
+      </button>
+    </div>
+
+
+    <div class="reset-password">
+      <button mat-button type="button" color="secondary" type="button" (click)="goToResetPassword()">
+        Recuperar contraseña
+      </button>
+    </div>
+  </div>

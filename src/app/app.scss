@@ -1,0 +1,28 @@
+
+@forward './globals/styles/variables';
+
+/* ================================
+   🌍 Estilos globales
+   ================================ */
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  margin: var(--spacing-md) 0;
+  font-weight: 500;
+}
+
+h1 { font-size: var(--h1-size); }
+h2 { font-size: var(--h2-size); }
+h3 { font-size: var(--h3-size); }
+
+.full-width {
+  width: 100%;
+}

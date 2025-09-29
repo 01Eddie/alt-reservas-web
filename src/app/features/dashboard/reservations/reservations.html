@@ -1,0 +1,47 @@
+<div class="reservations-container mat-elevation-z2">
+<h2 class="title">Reservas de salas</h2>
+  <div class="form-container">
+  <!-- DatePicker -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Fecha</mat-label>
+    <input matInput [matDatepicker]="picker"
+           [min]="today"
+           [(ngModel)]="selectedDate"
+           (dateChange)="onDateOrHourChange()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Select de horas -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Hora</mat-label>
+    <mat-select [(ngModel)]="selectedHour" (selectionChange)="onDateOrHourChange()">
+      <mat-option *ngFor="let hour of hours" [value]="hour.value">
+        {{ hour.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Select de salas -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Sala disponible</mat-label>
+    <mat-select [(ngModel)]="selectedRoom" [disabled]="rooms.length === 0">
+      <mat-option *ngFor="let room of rooms" [value]="room.id">
+        {{ room.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+  <div class="buttons-container">
+  <button mat-raised-button color="warn" (click)="cancelReservation()">
+    cancelar reserva
+  </button>
+
+  <button mat-raised-button color="primary" (click)="openConfirmDialog()"
+  [disabled]="!selectedDate || !selectedHour || !selectedRoom">
+    reserva sala
+  </button>
+  </div>
+
+</div>
