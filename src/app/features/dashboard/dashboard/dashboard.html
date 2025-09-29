@@ -34,7 +34,7 @@
           <tr>
             <th>Hora</th>
             <th *ngFor="let d of weekDays">
-              {{ d | date: 'EEE dd/MM' }}
+              {{ d.label }}
             </th>
           </tr>
         </thead>
@@ -42,9 +42,9 @@
           <tr *ngFor="let h of hours">
             <td class="hour">{{ h }}:00</td>
             <td *ngFor="let d of weekDays"
-                [ngClass]="{ 'past': isPast(d) }">
+                [ngClass]="{ 'past': isPast(d.date) }">
               <div class="cell">
-                <ng-container *ngFor="let r of getReservationsFor(d, h)">
+                <ng-container *ngFor="let r of getReservationsFor(d.date, h)">
                   <mat-chip [ngClass]="{
                     'sala-a': r.room.name === 'Sala A',
                     'sala-b': r.room.name === 'Sala B',
@@ -61,6 +61,9 @@
           </tr>
         </tbody>
       </table>
+
+      
+      
     </section>
 
   </div>

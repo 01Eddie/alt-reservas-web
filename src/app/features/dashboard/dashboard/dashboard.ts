@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { addDays, startOfWeek, endOfWeek, format } from 'date-fns';
+import { addDays, startOfWeek, endOfWeek, format, isBefore, startOfDay } from 'date-fns';
+import { es } from 'date-fns/locale';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { Auth } from '../../../core/services/auth';
@@ -28,7 +29,8 @@ export class Dashboard implements OnInit {
   reservations: ReservationList[] = [];
 
   startOfWeek: Date = this.getStartOfWeek(new Date());
-  weekDays: Date[] = [];
+  // weekDays: Date[] = [];
+  weekDays: { date: Date; label: string }[] = [];
   hours: number[] = Array.from({ length: 12 }, (_, i) => i + 8); // 8 → 19
 
   today: Date = new Date();
@@ -72,17 +74,6 @@ export class Dashboard implements OnInit {
       next: (data) => (this.reservations = data),
       error: () => (this.reservations = []),
     });
-
-    // const today = new Date();
-    // const start = today.toISOString().split('T')[0];
-    // const end = new Date(today.setDate(today.getDate() + 7))
-    //   .toISOString()
-    //   .split('T')[0];
-
-    // this.dashboardService.listReservations(start, end).subscribe({
-    //   next: (data) => (this.reservations = data),
-    //   error: () => (this.reservations = []),
-    // });
   }
 
   navigateToReservations() {
@@ -91,7 +82,14 @@ export class Dashboard implements OnInit {
 
 
   generateWeekDays() {
-    this.weekDays = Array.from({ length: 7 }, (_, i) => addDays(this.startOfWeek, i));
+    this.weekDays = Array.from({ length: 7 }, (_, i) => {
+      // addDays(this.startOfWeek, i)
+      const d = addDays(this.startOfWeek, i);
+      return {
+        date: d,
+        label: format(d, "EEEE dd/MM", { locale: es }),
+      };
+    });
   }
 
   prevWeek() {
@@ -122,9 +120,10 @@ export class Dashboard implements OnInit {
   }
 
   isPast(day: Date): boolean {
-    const todayStr = this.today.toISOString().split('T')[0];
-    const dayStr = day.toISOString().split('T')[0];
-    return dayStr < todayStr;
+    // const todayStr = this.today.toISOString().split('T')[0];
+    // const dayStr = day.toISOString().split('T')[0];
+    // return dayStr < todayStr;
+    return isBefore(startOfDay(day), startOfDay(this.today));
   }
 
 }
